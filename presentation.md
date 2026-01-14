@@ -1,6 +1,6 @@
 # Engineering Acceleration with VS Code + Copilot
 
-## Setup Context (30 sec)
+## Setup Context
 
 **Goal:** Show how we accelerate engineering work with VS Code + Copilot, governed by instructions, powered by agents + MCP tools, and measured via PR reporting.
 
@@ -16,9 +16,9 @@
 - **Install the extensions:** GitHub Copilot and GitHub Copilot Chat in VS Code (Extensions view, search "GitHub Copilot", Install both)
 - **Sign in to GitHub using your enterprise account:**
   - Go to [copilot.github.microsoft.com](https://copilot.github.microsoft.com/), select "Sign in to your enterprise account", then Continue
-- **Back in VS Code:** Select "Sign in with GitHub to use GitHub Copilot", then complete the browser authorization ("Authorize Visual Studio Code")
+- **Back in VS Code:** Select "Sign in with GitHub to use GitHub Copilot", then complete the browser authorization ("Authorize Visual Studio Code").  With your v-[alias]_microsoft account
 
-## 1. VS Code Chat Settings (3 min)
+## 1. VS Code Chat Settings
 
 Focus on what changed that matters for AI-assisted engineering:
 
@@ -26,12 +26,10 @@ Focus on what changed that matters for AI-assisted engineering:
 - Agent Sessions
 - Thinking
 - Skills
-- YOLO
 - Max Requests
+- YOLO Mode
 
-## Copilot Instructions (5 min)
-
-You want to show how we get repeatable results (and keep control).
+## Copilot Instructions, Agents, Prompts, and Skills
 
 **Reference:** [GitHub - Awesome Copilot](https://github.com/github/awesome-copilot) - Community-contributed instructions, prompts, and configurations.
 
@@ -41,7 +39,27 @@ You want to show how we get repeatable results (and keep control).
 
 ### B. Path-specific instructions
 
-- Use `.github/instructions/*.instructions.md` with globs to scope by folder/file types
+- Use `.github/instructions/*.instructions.md` with global patterns to scope by folder/file types
+- Auto-applied guidance (coding rules, commands), optionally scoped by file global patterns
+- [VS Code Custom Instructions](https://code.visualstudio.com/docs/copilot/customization/custom-instructions)
+
+### C. Custom agents
+
+- Create custom agent profiles in `.github/agents/` (persona + defaults)
+- Pick the agent in Copilot Chat's agent dropdown
+- [VS Code Custom Agents](https://code.visualstudio.com/docs/copilot/customization/custom-agents)
+
+### D. Saved prompts
+
+- Store reusable prompts in `.github/prompts/`
+- Run manually from Copilot Chat (often via `/`)
+- [VS Code Prompt Files](https://code.visualstudio.com/docs/copilot/customization/prompt-files)
+
+### E. Skills
+
+- Build reusable "capability packs" in `.github/skills/`
+- Agents can auto-load skills (each has a `SKILL.md`)
+- [VS Code Agent Skills](https://code.visualstudio.com/docs/copilot/customization/agent-skills)
 
 ### Your recommended "instruction pattern" to demo
 
@@ -62,13 +80,13 @@ This aligns with the "plan first, then execute" behaviors your team already disc
 - GitHub instructions guidance: Adding repository custom instructions
 - VS Code guidance: Use custom instructions in VS Code
 
-## What is an Agent (2 min)
+## What is an Agent
 
 Use this definition (simple and defensible):
 
 **Agent mode** is an editing capability where Copilot can search your codebase, read relevant files, propose edits across multiple files, run commands (with confirmation), and iterate based on results.
 
-## Plan Mode vs Agent Mode (4 min)
+## Plan Mode vs Agent Mode
 
 Use this framing:
 
@@ -88,16 +106,16 @@ Use this framing:
 
 This matches the "assess, plan, then get approval" guidance your org already promotes.
 
-## Your Recommended LLM (2 min)
+## Your Recommended LLM
 
 You have concrete evidence in your own PR traffic. Your PR notifications repeatedly show **Model Used: Claude Sonnet 4.5** in the Copilot usage summaries.
 
 So your "recommended LLM" for the demo can be:
 
-- **Claude Sonnet 4.5** for coding + tests (because it is already being used and reported in your PR workflow)
-- **GPT 5.2** when creating work items, ADRs, Documentation, or other non-coding artifacts (because it has strong capabilities for these tasks)
+- **Claude Sonnet 4.5** for coding + tests
+- **GPT 5.2** when creating work items, ADRs, Documentation, or other non-coding artifacts
 
-## MCP Servers We Use (6 min)
+## MCP Servers We Use
 
 Make this very concrete: "MCP is how we give the agent tools."
 
@@ -161,14 +179,18 @@ Make this very concrete: "MCP is how we give the agent tools."
 
 ### A. Example Plan (in Plan Mode)
 
-"Outline a refactoring plan for the UserService class in the LegacyApp project according to clean code principles. List the files you will modify and the specific changes you will make. Stop after presenting the plan for my approval."
+"Read the README.md and outline a refactoring plan for the UserService class in the LegacyApp project according to clean code principles. List the files you will modify and the specific changes you will make. Stop after presenting the plan for my approval."
 
 ### B. Example Execution (in Agent Mode)
 
-"Before we begin the implementation, please write this plan out to a folder called plans so that we can use it as a guide for our implementation."
+"Before we begin the implementation, please write this plan out to a folder called plans so that we can use it as a guide for our implementation.  The file should be named refactor-plan-20260114.md.  Also make sure you add checkboxes to the steps so that we can monitor our progress."
 "Proceed with step 1 of the approved refactoring plan for the UserService class in the LegacyApp project."
 
-## Tie It Together: Reporting AI Usage in PRs and What We Do With It (4 min)
+## Future
+
+- Assigning work items to Copilot agents.
+
+## Tie It Together: Reporting AI Usage in PRs and What We Do With It
 
 ### A. What we report (show a real PR excerpt)
 
