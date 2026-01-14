@@ -157,15 +157,16 @@ Make this very concrete: "MCP is how we give the agent tools."
   1. "Search engineering documentation for deployment procedures"
   2. "Resolve this engineering system entity ID"
 
-## Example Plan + Agent Interaction 
-
+## Example Plan + Agent Interaction
 
 ### A. Example Plan (in Plan Mode)
+
 "Outline a refactoring plan for the UserService class in the LegacyApp project according to clean code principles. List the files you will modify and the specific changes you will make. Stop after presenting the plan for my approval."
 
 ### B. Example Execution (in Agent Mode)
-"Proceed with step 1 of the approved refactoring plan for the UserService class in the LegacyApp project."
 
+"Before we begin the implementation, please write this plan out to a folder called plans so that we can use it as a guide for our implementation."
+"Proceed with step 1 of the approved refactoring plan for the UserService class in the LegacyApp project."
 
 ## Tie It Together: Reporting AI Usage in PRs and What We Do With It (4 min)
 
